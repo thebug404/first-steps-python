@@ -23,8 +23,6 @@ class FileService():
 
     fullpath = f"{folder}/{filename}"
 
-    print(fullpath)
-
     file = open(file=fullpath, mode="w+")
 
     file.write(data["data"])
