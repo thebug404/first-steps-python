@@ -1,4 +1,4 @@
-from typing import List, TypedDict
+from typing import List
 import requests
 import json
 import os
