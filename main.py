@@ -1,11 +1,12 @@
 from typing import List
 import requests
 import json
-import os
 
 from declarations import User
 
-from utils import generate_unique_filename
+from file_service import FileService
+
+file_service = FileService()
 
 BASE_URL = "https://jsonplaceholder.typicode.com/users"
 
@@ -15,19 +16,13 @@ users: List[User] = response.json()
 
 for user in users:
   name = user["name"].lower().replace(" ", "-")
-  directory_name = "dump"
 
-  filename = generate_unique_filename(f"{name}.json")
+  filename = f"{name}.json"
 
-  if not os.path.exists(directory_name):
-    os.mkdir(directory_name)
+  data = {"name": filename, "data": json.dumps(user)}
 
-  fullpath = f"{directory_name}/{filename}"
+  query = {"folder": "dump"}
 
-  file = open(f"{directory_name}/{filename}", "w+")
-
-  file.write(json.dumps(user))
-
-  file.close()
+  file_service.create(data, query)
 
 print("The file has been created successfully!!!")
