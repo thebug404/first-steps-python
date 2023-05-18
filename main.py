@@ -1,19 +1,11 @@
 from typing import List, TypedDict
 import requests
-import os
 import json
+import os
 
-from utils import generate_random_key
+from declarations import User
 
-class User(TypedDict):
-  id: int
-  name: str
-  username: str
-  email: str
-  address: dict
-  phone: str
-  website: str
-  company: dict
+from utils import generate_unique_filename
 
 BASE_URL = "https://jsonplaceholder.typicode.com/users"
 
@@ -22,17 +14,15 @@ response = requests.get(BASE_URL)
 users: List[User] = response.json()
 
 for user in users:
-  hash = generate_random_key()
   name = user["name"].lower().replace(" ", "-")
-  filename = f"{name}-{hash}.json"
   directory_name = "dump"
+
+  filename = generate_unique_filename(f"{name}.json")
 
   if not os.path.exists(directory_name):
     os.mkdir(directory_name)
 
   fullpath = f"{directory_name}/{filename}"
-
-  print(fullpath)
 
   file = open(f"{directory_name}/{filename}", "w+")
 
@@ -40,4 +30,4 @@ for user in users:
 
   file.close()
 
-  print("The file has been created successfully!!!")
+print("The file has been created successfully!!!")
