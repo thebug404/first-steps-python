@@ -1,2 +1,34 @@
-__pycache__
-dump
+# Entorno virtual generado por venv
+venv/
+
+# Other directories.
+dump/
+
+# Archivos de caché y registro de dependencias generados por pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Archivo de registro de errores de Python
+*.log
+
+# Bytecode compilado de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Directorio de resultados de pruebas y cobertura de código
+.coverage
+htmlcov/
+
+# Archivos y directorios generados por IDEs
+.idea/
+.vscode/
+*.pydevproject
+*.project
+*.cproject
+*.pytproject
+*.settings/
+*.tmproj
+*.esproj
+*.orig
