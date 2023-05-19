@@ -24,6 +24,8 @@ Create a new virtual environment:
 python -m venv venv
 ```
 
+> **Note**: this action may last a few seconds.
+
 Activate the virtual environment:
 
 **For users Windows**
