@@ -11,6 +11,9 @@ pip-delete-this-directory.txt
 # Archivo de registro de errores de Python
 *.log
 
+# Environments
+.env
+
 # Bytecode compilado de Python
 __pycache__/
 *.pyc
